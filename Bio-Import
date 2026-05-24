@@ -1,0 +1,23 @@
+<div id="author-bio-container"></div>
+ 
+<script>
+    fetch("https://github.com/SHASHANK-KENY/Blog-Bio-Repo/blob/main/Author-Bio.html")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load Author Bio HTML");
+            }
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById("author-bio-container").innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Error loading Author Bio:", error);
+ 
+            document.getElementById("author-bio-container").innerHTML = `
+<p style="color:red;">
+                    Unable to load Author Bio section.
+</p>
+            `;
+        });
+</script>
